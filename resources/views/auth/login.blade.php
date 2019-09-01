@@ -13,13 +13,13 @@
         @csrf
 
         <div class="form-group has-feedback">
-          <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email or Username">
+          <input id="login" type="text" class="form-control {{ $errors->has('username') || $errors->has('email') ? ' is-invalid' : '' }}" name="login" value="{{ old('username') ?: old('email') }}" required autocomplete="email" autofocus placeholder="Email or Username">
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-          @error('email')
+          @if($errors->has('username') || $errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ $errors->first('username') ?: $errors->first('email') }}</strong>
                                     </span>
-                                @enderror
+                                @endif
         </div>
         <div class="form-group has-feedback">
           <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
