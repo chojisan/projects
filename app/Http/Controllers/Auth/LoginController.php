@@ -27,6 +27,8 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/dashboard';
 
+    protected $username;
+
     /**
      * Create a new controller instance.
      *
@@ -35,5 +37,25 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+
+        $this->username = $this->findLoginType();
+    }
+
+    public function findLoginType()
+    {
+        $login = request()->input('login');
+
+        $loginType = filter_var($login, FILTER_VALIDATE_EMAIL ) 
+            ? 'email' 
+            : 'username';
+
+        request()->merge([$loginType => $login]);
+
+        return $loginType;
+    }
+
+    public function username()
+    {
+        return $this->username;
     }
 }
