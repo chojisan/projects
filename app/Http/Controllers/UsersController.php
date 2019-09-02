@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserValidation;
+use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
@@ -51,7 +52,7 @@ class UsersController extends Controller
 
         User::create($validated);
 
-        return redirect()->back();
+        return redirect()->route('users.index');
     }
 
     /**
@@ -85,7 +86,29 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $validator = \Validator::make($request->all(), [
+            'name' => 'required',
+            'username' => ['required', Rule::unique('users', 'username')->ignore($user->id)],
+            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($user->id)],
+            'password' => ['required', 'confirmed']
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();;
+        }
+
+        // hash password
+        $request['password'] = Hash::make($request['password']);
+
+        $user->update($request->only([
+            'name',
+            'username',
+            'email',
+            'password']));
+
+        return redirect()->route('users.index');
     }
 
     /**
