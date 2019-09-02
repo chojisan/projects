@@ -19,14 +19,14 @@ class ProjectsController extends Controller
         return view('projects.create');
     }
 
-    public function store()
+    public function store(Project $project)
     {
-        $project = new Project();
+        $validated = request()->validate([
+            'title' => 'required',
+            'description' => 'required'
+        ]);
 
-        $project->title = request('title');
-        $project->description = request('description');
-
-        $project->save();
+        Project::create($validated);
 
         return redirect('/projects');
     }
