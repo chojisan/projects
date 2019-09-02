@@ -23,7 +23,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <a href="/users/create" class="btn btn-primary" style="margin-bottom: 10px;">Add User</a>
+                        <a href="{{ route('users.create') }}" class="btn btn-primary" style="margin-bottom: 10px;">Add User</a>
                         <table class="table table-bordered">
                             <tr>
                                 <th style="width: 10px">#</th>
@@ -41,14 +41,14 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->username }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td><a href="/users/{{ $user->id }}"><i class="fa fa-eye"></i></a></td>
-                                    <td><a href="/users/{{ $user->id }}/edit"><i class="fa fa-edit"></i></a></td>
+                                    <td><a href="{{ route('users.show', $user->id) }}"><i class="fa fa-eye"></i></a></td>
+                                    <td><a href="{{ route('users.edit', $user->id) }}"><i class="fa fa-edit"></i></a></td>
                                     <td>
-                                        <a href="/users/{{ $user->id }}" onclick="event.preventDefault();
+                                        <a href="#" onclick="event.preventDefault();
                                         document.getElementById('delete-user-form-{{ $user->id }}').submit();">
                                             <i class="fa fa-trash"></i>
                                         </a>
-                                        <form id="delete-user-form-{{ $user->id }}" action="/users/{{ $user->id }}" method="POST" style="display: none;">
+                                        <form id="delete-user-form-{{ $user->id }}" action="{{ route('users.destroy', $user->id) }}" method="POST" style="display: none;">
                                             @csrf
                                              @method('DELETE')
                                         </form>

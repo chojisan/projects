@@ -26,7 +26,7 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form action="/users/{{ $user->id }}" method="post" role="form">
+                    <form action="{{ route('users.update', $user->id) }}" method="post" role="form">
                         <div class="box-body">
                             @csrf
                             @method('PATCH')
@@ -82,7 +82,7 @@
                         </div>
                     -->
                         <div class="box-footer">
-                            <a href="/users" class="btn btn-danger">Cancel</a>
+                            <a href="{{ route('users.index') }}" class="btn btn-danger">Cancel</a>
                             <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </form>

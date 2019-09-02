@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <div class="box-footer">
-                                <a href="/users" class="btn btn-danger">Back</a>
+                                <a href="{{ route('users.index') }}" class="btn btn-danger">Back</a>
                         </div>
                     </div>
                 </div>
