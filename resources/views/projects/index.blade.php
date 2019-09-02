@@ -34,7 +34,7 @@
                                 <th style="width: 40px"></th>
                             </tr>
 
-                            @foreach($projects as $project)
+                            @forelse($projects as $project)
                                 <tr>
                                     <td>{{ $project->id }}</td>
                                     <td>{{ $project->title }}</td>
@@ -52,7 +52,12 @@
                                         </form>
                                     </td>
                                 </tr>
-                            @endforeach
+
+                                @empty
+                                    <tr>
+                                        <td colspan="6">No current projects</td>
+                                    </tr>
+                            @endforelse
                         </table>
                     </div>
                     <!-- /.box-body -->

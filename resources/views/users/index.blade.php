@@ -35,7 +35,7 @@
                                 <th style="width: 40px"></th>
                             </tr>
 
-                            @foreach($users as $user)
+                            @forelse($users as $user)
                                 <tr>
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
@@ -54,7 +54,12 @@
                                         </form>
                                     </td>
                                 </tr>
-                            @endforeach
+
+                                @empty
+                                    <tr>
+                                        <td colspan="7">No current projects</td>
+                                    </tr>
+                            @endforelse
                         </table>
                     </div>
                     <!-- /.box-body -->
