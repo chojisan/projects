@@ -26,25 +26,31 @@
                     </div>
                      <!-- /.box-header -->
 
-                    <div class="box-body">
+                    <div class="box-body form-horizontal">
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <div class="form-control">
-                                {{ $user->name }}
+                            <label for="name" class="col-sm-2 control-label">Full Name</label>
+                            <div class="col-sm-10">
+                                <div class="form-control">
+                                    {{ $user->name }}
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="username">Username</label>
-                            <div class="form-control">
-                                {{ $user->username }}
+                            <label for="username" class="col-sm-2 control-label">Username</label>
+                            <div class="col-sm-10">
+                                <div class="form-control">
+                                    {{ $user->username }}
+                                </div>
                             </div>
                         </div>
     
                         <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <div class="form-control">
-                                {{ $user->email }}
+                            <label for="email" class="col-sm-2 control-label">Email Address</label>
+                            <div class="col-sm-10">
+                                <div class="form-control">
+                                    {{ $user->email }}
+                                </div>
                             </div>
                         </div>
                         <div class="box-footer">

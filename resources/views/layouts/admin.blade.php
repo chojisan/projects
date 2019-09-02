@@ -37,6 +37,14 @@
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <style type="text/css">
+        .flash-message {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+    </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -56,6 +64,9 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
+
+        <!-- Flash Message -->
+        @include('flash-message')
     
         @include('layouts.footer')
 
