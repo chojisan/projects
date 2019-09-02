@@ -42,11 +42,11 @@
                                     <td><a href="{{ route('projects.show', $project->id) }}"><i class="fa fa-eye"></i></a></td>
                                     <td><a href="{{ route('projects.edit', $project->id) }}"><i class="fa fa-edit"></i></a></td>
                                     <td>
-                                        <a href="/users/{{ $project->id }}" onclick="event.preventDefault();
-                                        document.getElementById('delete-user-form-{{ $project->id }}').submit();">
+                                        <a href="#" onclick="event.preventDefault();
+                                        document.getElementById('delete-project-form-{{ $project->id }}').submit();">
                                             <i class="fa fa-trash"></i>
                                         </a>
-                                        <form id="delete-user-form-{{ $project->id }}" action="{{ route('projects.destroy', $user->id) }}" method="POST" style="display: none;">
+                                        <form id="delete-project-form-{{ $project->id }}" action="{{ route('projects.destroy', $project->id) }}" method="POST" style="display: none;">
                                             @csrf
                                              @method('DELETE')
                                         </form>
