@@ -26,13 +26,13 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li>
+        <li class="{{ (request()->routeIs('dashboard')) ? 'active' : '' }}">
           <a href="{{ route('dashboard') }}">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <li>
-            <a href="/users">
+        <li class="{{ (request()->routeIs('users*')) ? 'active' : '' }}">
+          <a href="{{ route('users.index') }}">
               <i class="fa fa-users"></i> <span>Users</span>
             </a>
           </li>
