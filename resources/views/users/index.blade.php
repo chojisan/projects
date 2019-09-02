@@ -23,7 +23,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <a href="{{ route('users.create') }}" class="btn btn-primary" style="margin-bottom: 10px;">Add User</a>
+                        <a href="{{ route('users.create') }}" class="btn btn-primary" style="margin-bottom: 10px;">Add New User</a>
                         <table class="table table-bordered">
                             <tr>
                                 <th style="width: 10px">#</th>
