@@ -57,7 +57,7 @@
 
                                 @empty
                                     <tr>
-                                        <td colspan="7">No current projects</td>
+                                        <td colspan="7">No current users</td>
                                     </tr>
                             @endforelse
                         </table>
