@@ -28,6 +28,7 @@
                             <tr>
                                 <th style="width: 10px">#</th>
                                 <th>Name</th>
+                                <th>Username</th>
                                 <th>Email</th>
                                 <th style="width: 40px"></th>
                                 <th style="width: 40px"></th>
@@ -38,6 +39,7 @@
                                 <tr>
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
+                                    <td>{{ $user->username }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td><a href="/users/{{ $user->id }}"><i class="fa fa-eye"></i></a></td>
                                     <td><a href="/users/{{ $user->id }}/edit"><i class="fa fa-edit"></i></a></td>

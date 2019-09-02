@@ -28,14 +28,21 @@
 
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Name</label>
+                            <label for="name">Name</label>
                             <div class="form-control">
                                 {{ $user->name }}
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <div class="form-control">
+                                {{ $user->username }}
+                            </div>
+                        </div>
     
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email Address</label>
+                            <label for="email">Email Address</label>
                             <div class="form-control">
                                 {{ $user->email }}
                             </div>
