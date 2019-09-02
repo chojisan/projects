@@ -26,7 +26,7 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form action="/users" method="post" role="form">
+                    <form action="{{ route('users.store') }}" method="post" role="form">
                         <div class="box-body">
                             @csrf
         
@@ -77,7 +77,7 @@
                 
                         </div>
                         <div class="box-footer">
-                            <a href="/users" class="btn btn-danger">Cancel</a>
+                            <a href="{{ route('users.index') }}" class="btn btn-danger">Cancel</a>
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>
                         <!-- /.col -->
