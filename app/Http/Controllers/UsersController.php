@@ -96,7 +96,7 @@ class UsersController extends Controller
         if ($validator->fails()) {
             return redirect()->back()
                         ->withErrors($validator)
-                        ->withInput();;
+                        ->withInput();
         }
 
         // hash password
