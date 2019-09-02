@@ -88,7 +88,7 @@ class UsersController extends Controller
     {
         $validator = \Validator::make($request->all(), [
             'name' => 'required',
-            'username' => ['required', 'regex:/^\S*$/u', Rule::unique('users', 'username')->ignore($user->id)],
+            'username' => ['required', 'alpha_dash', Rule::unique('users', 'username')->ignore($user->id)],
             'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($user->id)],
             'password' => ['required', 'confirmed']
         ]);

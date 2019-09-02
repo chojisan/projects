@@ -25,7 +25,7 @@ class UserValidation extends FormRequest
     {
         return [
             'name' => 'required',
-            'username' => 'required|unique:users|regex:/^\S*$/u',
+            'username' => 'required|unique:users|alpha_dash',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed'
         ];
