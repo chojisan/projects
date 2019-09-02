@@ -43,7 +43,7 @@
                             </div>
 
                             <div class="form-group has-feedback">
-                                <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" value="{{ $user->username }}" required autocomplete="username" autofocus placeholder="username">
+                                <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" value="{{ old('username') ?: $user->username }}" required autocomplete="username" autofocus placeholder="username">
     
                                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
                                 @error('username')
@@ -54,7 +54,7 @@
                             </div>
 
                             <div class="form-group has-feedback">
-                                <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email" placeholder="Email Address">
+                                <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') ?: $user->email }}" required autocomplete="email" placeholder="Email Address">
                                 
                                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                                 @error('email')
