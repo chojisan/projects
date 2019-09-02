@@ -44,7 +44,7 @@
                             </div>
 
                             <div class="form-group has-feedback @error('username') has-error @enderror">
-                                <label for="name" class="col-sm-2 control-label">Username</label>
+                                <label for="username" class="col-sm-2 control-label">Username</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus placeholder="Username">
                                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -57,7 +57,7 @@
                             </div>
 
                             <div class="form-group has-feedback @error('email') has-error @enderror">
-                                <label for="name" class="col-sm-2 control-label">Email Address</label>
+                                <label for="email" class="col-sm-2 control-label">Email Address</label>
                                 <div class="col-sm-10">
                                     <input type="email" id="email" class="form-control" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email Addess">
                                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

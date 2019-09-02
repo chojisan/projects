@@ -9,7 +9,7 @@
         <div class="register-box-body">
             <p class="login-box-msg">Register a new membership</p>
     
-            <form action="{{ route('register') }}" method="post" class="form-horizontal">
+            <form action="{{ route('register') }}" method="post" role="form" class="form-horizontal">
                 @csrf
                 
                 <div class="form-group has-feedback @error('name') has-error @enderror">
