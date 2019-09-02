@@ -63,7 +63,7 @@
                                     </span>
                                 @enderror
                             </div>
-        
+        <!--
                             <div class="form-group has-feedback">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
           
@@ -80,7 +80,7 @@
                                 <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
                             </div>
                         </div>
-                        
+                    -->
                         <div class="box-footer">
                             <a href="/users" class="btn btn-danger">Cancel</a>
                             <button type="submit" class="btn btn-primary">Update</button>

@@ -90,7 +90,7 @@ class UsersController extends Controller
             'name' => 'required',
             'username' => ['required', 'alpha_dash', Rule::unique('users', 'username')->ignore($user->id)],
             'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($user->id)],
-            'password' => ['required', 'confirmed']
+            //'password' => ['required', 'confirmed']
         ]);
 
         if ($validator->fails()) {
@@ -119,10 +119,8 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
-        dd($user);
-        
         $user->delete();
 
-        return redirect('\users');
+        return redirect()->route('users.index');
     }
 }
