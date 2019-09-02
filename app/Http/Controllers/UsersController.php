@@ -100,13 +100,9 @@ class UsersController extends Controller
         }
 
         // hash password
-        $request['password'] = Hash::make($request['password']);
+        //$request['password'] = Hash::make($request['password']);
 
-        $user->update($request->only([
-            'name',
-            'username',
-            'email',
-            'password']));
+        $user->update($validator->validated());
 
         return redirect()->route('users.index');
     }
