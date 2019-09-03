@@ -28,6 +28,7 @@
                             <tr>
                                 <th style="width: 10px">#</th>
                                 <th>Title</th>
+                                <th>Author</th>
                                 <th>Description</th>
                                 <th style="width: 40px"></th>
                                 <th style="width: 40px"></th>
@@ -38,6 +39,7 @@
                                 <tr>
                                     <td>{{ $project->id }}</td>
                                     <td>{{ $project->title }}</td>
+                                    <td>{{ $project->user->name }}</td>
                                     <td>{{ $project->description }}</td>
                                     <td><a href="{{ route('projects.show', $project->id) }}" class="label label-info"><i class="fa fa-eye"></i></a></td>
                                     <td><a href="{{ route('projects.edit', $project->id) }}" class="label label-warning"><i class="fa fa-edit"></i></a></td>
@@ -55,7 +57,7 @@
 
                                 @empty
                                     <tr>
-                                        <td colspan="6">No current projects</td>
+                                        <td colspan="7">No current projects</td>
                                     </tr>
                             @endforelse
                         </table>
