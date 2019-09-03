@@ -39,6 +39,6 @@
     <div class="alert alert-danger alert-dismissible flash-message">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h4><i class="icon fa fa-ban"></i> Alert!</h4>
-        Please check the form below for errors
+        Please check the form for errors
     </div>
 @endif
