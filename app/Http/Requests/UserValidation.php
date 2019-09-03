@@ -27,7 +27,7 @@ class UserValidation extends FormRequest
             'name' => 'required',
             'username' => 'required|unique:users|alpha_dash',
             'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed'
+            'password' => 'required|confirmed|min:8'
         ];
     }
 }
