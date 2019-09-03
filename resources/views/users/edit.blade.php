@@ -20,7 +20,7 @@
             <!-- left column -->
             <div class="col-md-12">
                 <!-- general form elements -->
-                <div class="box box-primary">
+                <div class="box box-warning">
                     <div class="box-header with-border">
                         <h3 class="box-title">Update User Form</h3>
                     </div>
