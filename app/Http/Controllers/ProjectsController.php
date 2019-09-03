@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Project;
+use Illuminate\Support\Arr;
 
 class ProjectsController extends Controller
 {
@@ -14,7 +15,7 @@ class ProjectsController extends Controller
 
     public function index()
     {
-        $projects = Project::paginate(10);
+        $projects = Project::with('user')->paginate(10);
 
         return view('projects.index', compact('projects'));
     }
@@ -28,7 +29,7 @@ class ProjectsController extends Controller
     {
         $validated = $this->validation();
 
-        Project::create($validated);
+        Project::create(Arr::add($validated, 'user_id', auth()->id()));
 
         return redirect()
                 ->route('projects.index')
