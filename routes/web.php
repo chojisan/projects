@@ -15,10 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('projects', 'ProjectsController');
-
 Auth::routes(['verify' => true]);
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware('verified');
 
-Route::resource('users', 'UsersController');
+Route::resource('projects', 'ProjectsController')->middleware('verified');
+
+Route::resource('users', 'UsersController')->middleware('verified');
