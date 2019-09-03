@@ -57,7 +57,7 @@ class UsersController extends Controller
 
         return redirect()
                 ->route('users.index')
-                ->with('success','User created successfully!');
+                ->with('success', 'User created successfully!');
     }
 
     /**
@@ -92,7 +92,7 @@ class UsersController extends Controller
     public function update(Request $request, User $user)
     {
         // validate input
-        $validated = $this->validation($request, $user)->validated();
+        $validated = $this->validation($request, $user->id)->validated();
 
         // hash password
         $validated['password'] = Hash::make($validated['password']);
@@ -102,7 +102,7 @@ class UsersController extends Controller
 
         return redirect()
                 ->route('users.index')
-                ->with('success','User updated successfully!');
+                ->with('success', 'User updated successfully!');
     }
 
     /**
@@ -117,29 +117,27 @@ class UsersController extends Controller
 
         return redirect()
                 ->route('users.index')
-                ->with('success','User deleted successfully!');
+                ->with('success', 'User deleted successfully!');
     }
 
-    public function validation($request, $user = null)
+    public function validation($request, $userId = null)
     {
         try {
-
             $validator = \Validator::make($request->all(), [
                 'name' => 'required',
                 'username' => [
-                                'required', 
-                                'alpha_dash', 
-                                Rule::unique('users', 'username')->ignore($user ? $user->id: null)
+                                'required',
+                                'alpha_dash',
+                                Rule::unique('users', 'username')->ignore($userId)
                             ],
                 'email' => [
-                            'required', 
-                            'email', 
-                            Rule::unique('users', 'email')->ignore($user ? $user->id: null)
+                            'required',
+                            'email',
+                            Rule::unique('users', 'email')->ignore($userId)
                         ],
                 'password' => ['required', 'confirmed', 'min:8']
             ]);
-
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             // check if input has errors
             //if ($validator->fails()) {
             return redirect()->back()
