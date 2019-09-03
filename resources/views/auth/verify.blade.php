@@ -9,7 +9,7 @@
             </div>
 
             <div class="login-box-body">
-                <p class="login-box-msg">{{ __('Verify Your Email Address') }}</p>
+                <h4 class="login-box-msg">{{ __('Verify Your Email Address') }}</h4>
 
                 @if (session('resent'))
                     <div class="alert alert-success" role="alert">

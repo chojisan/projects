@@ -9,7 +9,7 @@
                 </div>
                     <!-- /.login-logo -->
                 <div class="login-box-body">
-                    <p class="login-box-msg">Reset password</p>
+                    <h4 class="login-box-msg">Reset password</h4>
 
                     <form method="POST" action="{{ route('password.update') }}" role="form">
                         @csrf

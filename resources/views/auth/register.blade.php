@@ -7,7 +7,7 @@
         </div>
   
         <div class="register-box-body">
-            <p class="login-box-msg">Register a new membership</p>
+            <h4 class="login-box-msg">Register a new membership</h4>
     
             <form action="{{ route('register') }}" method="post" role="form" class="form-horizontal">
                 @csrf

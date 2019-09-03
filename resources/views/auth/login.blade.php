@@ -7,7 +7,7 @@
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
-            <p class="login-box-msg">Sign in to start your session</p>
+            <h4 class="login-box-msg">Sign in to start your session</h4>
   
             <form action="{{ route('login') }}" method="post" role="form">
                 @csrf
