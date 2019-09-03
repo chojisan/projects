@@ -30,6 +30,7 @@
                                 <th>Name</th>
                                 <th>Username</th>
                                 <th>Email</th>
+                                <th>Email Verified At</th>
                                 <th style="width: 40px"></th>
                                 <th style="width: 40px"></th>
                                 <th style="width: 40px"></th>
@@ -41,6 +42,7 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->username }}</td>
                                     <td>{{ $user->email }}</td>
+                                    <td>{{ $user->email_verified_at ? $user->email_verified_at->diffForHumans(): '-' }}</td>
                                     <td><a href="{{ route('users.show', $user->id) }}"><i class="fa fa-eye"></i></a></td>
                                     <td><a href="{{ route('users.edit', $user->id) }}"><i class="fa fa-edit"></i></a></td>
                                     <td>
@@ -57,7 +59,7 @@
 
                                 @empty
                                     <tr>
-                                        <td colspan="7">No current users</td>
+                                        <td colspan="8">No current users</td>
                                     </tr>
                             @endforelse
                         </table>
