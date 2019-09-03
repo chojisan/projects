@@ -7,6 +7,11 @@ use App\Project;
 
 class ProjectsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     public function index()
     {
         $projects = Project::paginate(10);
@@ -21,10 +26,7 @@ class ProjectsController extends Controller
 
     public function store(Project $project)
     {
-        $validated = request()->validate([
-            'title' => 'required',
-            'description' => 'required'
-        ]);
+        $validated = $this->validation();
 
         Project::create($validated);
 
@@ -51,5 +53,11 @@ class ProjectsController extends Controller
 
     }
 
-
+    public function validation()
+    {
+        return request()->validate([
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+    }
 }
