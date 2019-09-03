@@ -27,30 +27,33 @@
                      <!-- /.box-header -->
 
                     <div class="box-body form-horizontal">
-                        <div class="form-group">
+                        <div class="form-group has-feedback">
                             <label for="name" class="col-sm-2 control-label">Full Name</label>
                             <div class="col-sm-10">
                                 <div class="form-control">
                                     {{ $user->name }}
                                 </div>
+                                <span class="glyphicon glyphicon-user form-control-feedback"></span>
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group has-feedback">
                             <label for="username" class="col-sm-2 control-label">Username</label>
                             <div class="col-sm-10">
                                 <div class="form-control">
                                     {{ $user->username }}
                                 </div>
+                                <span class="glyphicon glyphicon-user form-control-feedback"></span>
                             </div>
                         </div>
     
-                        <div class="form-group">
+                        <div class="form-group has-feedback">
                             <label for="email" class="col-sm-2 control-label">Email Address</label>
                             <div class="col-sm-10">
                                 <div class="form-control">
                                     {{ $user->email }}
                                 </div>
+                                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                             </div>
                         </div>
                         <div class="box-footer">
