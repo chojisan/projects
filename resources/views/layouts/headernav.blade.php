@@ -32,7 +32,7 @@
                             <img src="/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                             <p>
                                 {{ Auth::user()->name }} - Web Developer
-                                <small>Member since Nov. 2012</small>
+                                <small>Member since {{ Auth::user()->created_at->format('M Y') }}</small>
                             </p>
                         </li>
                         <!-- Menu Body -->
