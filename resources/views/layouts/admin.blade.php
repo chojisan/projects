@@ -66,7 +66,7 @@
         <!-- /.content-wrapper -->
 
         <!-- Flash Message -->
-        @include('flash-message')
+        @include('errors.flash-message')
     
         @include('layouts.footer')
 
