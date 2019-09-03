@@ -46,6 +46,7 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+        // validate input
         $validated = $this->validation($request)->validated();
 
         // hash password
@@ -90,12 +91,13 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        // get validated inputs
+        // validate input
         $validated = $this->validation($request, $user)->validated();
 
         // hash password
         $validated['password'] = Hash::make($validated['password']);
 
+        // update user
         $user->update($validated);
 
         return redirect()
@@ -124,8 +126,16 @@ class UsersController extends Controller
 
             $validator = \Validator::make($request->all(), [
                 'name' => 'required',
-                'username' => ['required', 'alpha_dash', Rule::unique('users', 'username')->ignore($user ? $user->id: null)],
-                'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($user ? $user->id: null)],
+                'username' => [
+                                'required', 
+                                'alpha_dash', 
+                                Rule::unique('users', 'username')->ignore($user ? $user->id: null)
+                            ],
+                'email' => [
+                            'required', 
+                            'email', 
+                            Rule::unique('users', 'email')->ignore($user ? $user->id: null)
+                        ],
                 'password' => ['required', 'confirmed', 'min:8']
             ]);
 
@@ -137,6 +147,7 @@ class UsersController extends Controller
                     ->withInput();
             //}
         }
+
         return $validator;
     }
 }
