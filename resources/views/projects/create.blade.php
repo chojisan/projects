@@ -26,28 +26,34 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form action="{{ route('projects.store') }}" method="post" role="form">
+                    <form action="{{ route('projects.store') }}" method="post" role="form"  class="form-horizontal">
                         <div class="box-body">
                             @csrf
         
-                            <div class="form-group has-feedback">
-                                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title') }}" required autocomplete="name" autofocus placeholder="Full name">
-                                <span class="glyphicon glyphicon-file form-control-feedback"></span>
-                                @error('title')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="form-group has-feedback @error('title') has-error @enderror">
+                                <label for="title" class="col-sm-2 control-label">Project Title</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" required autocomplete="name" autofocus placeholder="Project Title">
+                                    <span class="glyphicon glyphicon-file form-control-feedback"></span>
+                                    @error('title')
+                                        <span class="help-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
 
-                            <div class="form-group has-feedback">
-                                <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="10" autofocus placeholder="Description">{{ old('title') }}</textarea>
-                                <span class="glyphicon glyphicon-font form-control-feedback"></span>
-                                @error('description')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="form-group has-feedback @error('description') has-error @enderror">
+                                <label for="description" class="col-sm-2 control-label">Description</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" name="description" id="description" rows="10" autofocus placeholder="Description">{{ old('title') }}</textarea>
+                                    <span class="glyphicon glyphicon-font form-control-feedback"></span>
+                                    @error('description')
+                                        <span class="help-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
 
                         </div>
