@@ -15,14 +15,15 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('password.email') }}">
+                    <form method="POST" action="{{ route('password.email') }}" role="form">
                         @csrf
 
-                        <div class="form-group has-feedback">
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email Address">
+                        <div class="form-group has-feedback @error('email') has-error @enderror">
+                            <label for="email">Email Address</label>
+                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email Address">
                             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                             @error('email')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="help-block" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
