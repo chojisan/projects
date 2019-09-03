@@ -33,7 +33,7 @@
                             <div class="form-group has-feedback @error('name') has-error @enderror">
                                 <label for="name" class="col-sm-2 control-label">Full Name</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Full name">
+                                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Full Name">
                                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                                     @error('name')
                                         <span class="help-block" role="alert">
