@@ -94,19 +94,23 @@ class UsersController extends Controller
             'name' => 'required',
             'username' => ['required', 'alpha_dash', Rule::unique('users', 'username')->ignore($user->id)],
             'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($user->id)],
-            //'password' => ['required', 'confirmed']
+            'password' => ['required', 'confirmed']
         ]);
 
+        // check if input has errors
         if ($validator->fails()) {
             return redirect()->back()
                         ->withErrors($validator)
                         ->withInput();
         }
 
-        // hash password
-        //$request['password'] = Hash::make($request['password']);
+        // get validated inputs
+        $validated = $validator->validated();
 
-        $user->update($validator->validated());
+        // hash password
+        $validated['password'] = Hash::make($validated['password']);
+
+        $user->update($validated);
 
         return redirect()
                 ->route('users.index')
