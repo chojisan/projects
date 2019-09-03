@@ -94,7 +94,7 @@ class UsersController extends Controller
             'name' => 'required',
             'username' => ['required', 'alpha_dash', Rule::unique('users', 'username')->ignore($user->id)],
             'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($user->id)],
-            'password' => ['required', 'confirmed']
+            'password' => ['required', 'confirmed', 'min:8']
         ]);
 
         // check if input has errors
