@@ -43,14 +43,18 @@ class LoginController extends Controller
 
     public function findLoginType()
     {
+        // get login input
         $login = request()->input('login');
 
+        // check if email or username is used
         $loginType = filter_var($login, FILTER_VALIDATE_EMAIL)
             ? 'email'
             : 'username';
 
+        // merge to the request data
         request()->merge([$loginType => $login]);
 
+        // return login type either email or username
         return $loginType;
     }
 
