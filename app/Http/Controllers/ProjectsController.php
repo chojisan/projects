@@ -30,27 +30,39 @@ class ProjectsController extends Controller
 
         Project::create($validated);
 
-        return redirect('/projects');
+        return redirect()
+                ->route('projects.index')
+                ->with('success', 'Project created successfully!');
     }
 
-    public function show()
+    public function show(Project $project)
     {
-
+        return view('projects.show', compact('project'));
     }
 
-    public function edit() 
+    public function edit(Project $project) 
     {
-        return view('projects.edit');
+        return view('projects.edit', compact('project'));
     }
 
-    public function update()
+    public function update(Project $project)
     {
+        $validated = $this->validation();
 
+        $project->update($validated);
+
+        return redirect()
+                ->route('projects.index')
+                ->with('success', 'Project updated successfully!');
     }
 
-    public function destroy()
+    public function destroy(Project $project)
     {
+        $project->delete();
 
+        return redirect()
+                ->route('projects.index')
+                ->with('success', 'Project deleted successfully!');
     }
 
     public function validation()
