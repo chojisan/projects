@@ -128,13 +128,14 @@ class UsersController extends Controller
                 'username' => [
                                 'required',
                                 'alpha_dash',
+                                'max:50',
                                 Rule::unique('users', 'username')->ignore($userId)
                             ],
-                'email' => [
-                            'required',
-                            'email',
-                            Rule::unique('users', 'email')->ignore($userId)
-                        ],
+                'email'    => [
+                                'required',
+                                'email',
+                                Rule::unique('users', 'email')->ignore($userId)
+                            ],
                 'password' => ['required', 'confirmed', 'min:8']
             ]);
         } catch (Exception $e) {
