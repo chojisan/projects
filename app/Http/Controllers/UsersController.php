@@ -44,9 +44,9 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserValidation $request)
+    public function store(Request $request)
     {
-        $validated = $request->validated();
+        $validated = $this->validation($request)->validated();
 
         // hash password
         $validated['password'] = Hash::make($validated['password']);
@@ -90,22 +90,8 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $validator = \Validator::make($request->all(), [
-            'name' => 'required',
-            'username' => ['required', 'alpha_dash', Rule::unique('users', 'username')->ignore($user->id)],
-            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($user->id)],
-            'password' => ['required', 'confirmed', 'min:8']
-        ]);
-
-        // check if input has errors
-        if ($validator->fails()) {
-            return redirect()->back()
-                        ->withErrors($validator)
-                        ->withInput();
-        }
-
         // get validated inputs
-        $validated = $validator->validated();
+        $validated = $this->validation($request, $user)->validated();
 
         // hash password
         $validated['password'] = Hash::make($validated['password']);
@@ -130,5 +116,27 @@ class UsersController extends Controller
         return redirect()
                 ->route('users.index')
                 ->with('success','User deleted successfully!');
+    }
+
+    public function validation($request, $user = null)
+    {
+        try {
+
+            $validator = \Validator::make($request->all(), [
+                'name' => 'required',
+                'username' => ['required', 'alpha_dash', Rule::unique('users', 'username')->ignore($user ? $user->id: null)],
+                'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($user ? $user->id: null)],
+                'password' => ['required', 'confirmed', 'min:8']
+            ]);
+
+        } catch(Exception $e) {
+            // check if input has errors
+            //if ($validator->fails()) {
+            return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+            //}
+        }
+        return $validator;
     }
 }
