@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserValidation;
 use Illuminate\Validation\Rule;
+use Illuminate\Auth\Events\Registered;
 
 class UsersController extends Controller
 {
@@ -50,7 +51,8 @@ class UsersController extends Controller
         // hash password
         $validated['password'] = Hash::make($validated['password']);
 
-        User::create($validated);
+        // create and send activation email
+        event(new Registered(User::create($validated)));
 
         return redirect()
                 ->route('users.index')
