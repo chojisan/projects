@@ -43,10 +43,10 @@
                                     <td>{{ $user->username }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->email_verified_at ? $user->email_verified_at->diffForHumans(): '-' }}</td>
-                                    <td><a href="{{ route('users.show', $user->id) }}"><i class="fa fa-eye"></i></a></td>
-                                    <td><a href="{{ route('users.edit', $user->id) }}"><i class="fa fa-edit"></i></a></td>
+                                    <td><a href="{{ route('users.show', $user->id) }}" class="label label-info"><i class="fa fa-eye"></i></a></td>
+                                    <td><a href="{{ route('users.edit', $user->id) }}" class="label label-warning"><i class="fa fa-edit"></i></a></td>
                                     <td>
-                                        <a href="#" onclick="event.preventDefault();
+                                        <a href="#" class="label label-danger" onclick="event.preventDefault();
                                         document.getElementById('delete-user-form-{{ $user->id }}').submit();">
                                             <i class="fa fa-trash"></i>
                                         </a>
