@@ -22,7 +22,7 @@
                 <!-- general form elements -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Update User Form</h3>
+                        <h3 class="box-title">User Details</h3>
                     </div>
                      <!-- /.box-header -->
 
