@@ -40,7 +40,7 @@
 
     <style type="text/css">
         .flash-message {
-            position: absolute;
+            position: fixed;
             bottom: 10px;
             right: 10px;
         }
@@ -78,23 +78,25 @@
     <!-- ./wrapper -->
 
     <!-- jQuery 3 -->
-    <script src="/vendor/jquery/dist/jquery-3.4.1.min.js"></script>
+    <script src="/vendor/jquery/dist/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="/vendor/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-    $.widget.bridge('uibutton', $.ui.button);
+        $.widget.bridge('uibutton', $.ui.button);
     </script>
     <!-- Bootstrap 3.3.7 -->
-    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Morris.js charts -->
     <script src="/vendor/raphael/raphael.min.js"></script>
     <script src="/vendor/morris.js/morris.min.js"></script>
     <!-- Sparkline -->
     <script src="/vendor/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
     <!-- jvectormap -->
+    <!--
     <script src="/vendor/jvectormap/jquery-jvectormap.min.js"></script>
     <script src="/vendor/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    -->
     <!-- jQuery Knob Chart -->
     <script src="/vendor/jquery-knob/dist/jquery.knob.min.js"></script>
     <!-- daterangepicker -->
@@ -111,11 +113,13 @@
     <!-- AdminLTE App -->
     <script src="/vendor/admin-lte/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <!--
     <script src="/vendor/admin-lte/dist/js/pages/dashboard.js"></script>
+    -->
     <!-- AdminLTE for demo purposes -->
     <script src="/vendor/admin-lte/dist/js/demo.js"></script>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{-- asset('js/app.js') --}}" defer></script>
 </body>
 </html>
