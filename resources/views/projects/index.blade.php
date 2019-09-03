@@ -7,7 +7,7 @@
             <small>list of projects</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> Home</a></li>
             <li><a href="{{ route('projects.index') }}" class="active"><i class="fa fa-cubes"></i> Projects</a></li>
         </ol>
     </section>

@@ -7,7 +7,7 @@
             <small>create new user</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> Home</a></li>
             <li><a href="{{ route('users.index') }}" class="active"><i class="fa fa-users"></i> User Accounts</a></li>
             <li><a href="{{ route('users.create') }}" class="active"><i class="fa fa-user"></i> Create New User</a></li>
         </ol>
