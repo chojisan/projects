@@ -48,36 +48,35 @@
             </div>
         </div>
 
-        {!! Form::open(['url' => route('users.destroy'), ]) !!}
-
+        {!! Form::open(['method' => 'delete', 'id' => 'delete-user-form']) !!}
+            
         {!! Form::close() !!}
+
+        <div class="modal fade" id="modal-default">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">Delete Record</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete <strong id="user-name"></strong> record?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-defaultt" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" id="delete-user">Delete Anyway</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
     </section>
 @endsection
 
 @push('plugin-scripts')
-    <!--<script src="{{-- asset('js/plugins/users-table.js') --}}"></script>-->
-    <script>
-        $(function() {
-            'use strict'
-        
-            $(function() {
-                $('#users-table').DataTable({
-                    processing: true,
-                    serverSide: true,
-                    ajax: "{{ route('datatables.users') }}",
-                    columns: [
-                        { data: 'id', name: 'id' },
-                        { data: 'name', name: 'name' },
-                        { data: 'username', name: 'username' },
-                        { data: 'email', name: 'email' },
-                        { data: 'email_verified_at', name: 'email_verified_at' },
-                        { data: 'show', name: 'show', orderable: false, searchable: false, sType: 'html' },
-                        { data: 'edit', name: 'edit', orderable: false, searchable: false },
-                        { data: 'delete', name: 'delete', orderable: false, searchable: false },
-                    ]
-                });
-            });
-        
-        });
-    </script>
+    <script src="{{ asset('js/plugins/users-table.js') }}" defer></script>
 @endpush
