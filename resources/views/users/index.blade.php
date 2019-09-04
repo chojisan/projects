@@ -24,62 +24,60 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <a href="{{ route('users.create') }}" class="btn btn-primary" style="margin-bottom: 10px;">Add New User</a>
-                        <table class="table table-bordered">
-                            <tr>
-                                <th style="width: 10px">#</th>
-                                <th>Name</th>
-                                <th>Username</th>
-                                <th>Email</th>
-                                <th>Email Verified At</th>
-                                <th style="width: 40px"></th>
-                                <th style="width: 40px"></th>
-                                <th style="width: 40px"></th>
-                            </tr>
-
-                            @forelse($users as $user)
+                        <table id="users-table" class="table table-bordered">
+                            <thead>
                                 <tr>
-                                    <td>{{ $user->id }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->username }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->email_verified_at ? $user->email_verified_at->diffForHumans(): '-' }}</td>
-                                    <td><a href="{{ route('users.show', $user->id) }}" class="label label-info"><i class="fa fa-eye"></i></a></td>
-                                    <td><a href="{{ route('users.edit', $user->id) }}" class="label label-warning"><i class="fa fa-edit"></i></a></td>
-                                    <td>
-                                        <a href="#" class="label label-danger" onclick="event.preventDefault();
-                                        document.getElementById('delete-user-form-{{ $user->id }}').submit();">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                        <form id="delete-user-form-{{ $user->id }}" action="{{ route('users.destroy', $user->id) }}" method="POST" style="display: none;">
-                                            @csrf
-                                             @method('DELETE')
-                                        </form>
-                                    </td>
+                                    <th style="width: 10px">#</th>
+                                    <th>Name</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Email Verified At</th>
+                                    <th style="width: 40px"></th>
+                                    <th style="width: 40px"></th>
+                                    <th style="width: 40px"></th>
                                 </tr>
-
-                                @empty
-                                    <tr>
-                                        <td colspan="8">No current users</td>
-                                    </tr>
-                            @endforelse
+                            </thead>
                         </table>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">
-                        {{ $users->links() }}
-                        <!--
-                        <ul class="pagination pagination-sm no-margin pull-right">
-                            <li><a href="#">&laquo;</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">&raquo;</a></li>
-                        </ul>
-                    -->
+
                     </div>
                 </div>
                 <!-- /.box -->
             </div>
         </div>
+
+        {!! Form::open(['url' => route('users.destroy'), ]) !!}
+
+        {!! Form::close() !!}
     </section>
 @endsection
+
+@push('plugin-scripts')
+    <!--<script src="{{-- asset('js/plugins/users-table.js') --}}"></script>-->
+    <script>
+        $(function() {
+            'use strict'
+        
+            $(function() {
+                $('#users-table').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: "{{ route('datatables.users') }}",
+                    columns: [
+                        { data: 'id', name: 'id' },
+                        { data: 'name', name: 'name' },
+                        { data: 'username', name: 'username' },
+                        { data: 'email', name: 'email' },
+                        { data: 'email_verified_at', name: 'email_verified_at' },
+                        { data: 'show', name: 'show', orderable: false, searchable: false, sType: 'html' },
+                        { data: 'edit', name: 'edit', orderable: false, searchable: false },
+                        { data: 'delete', name: 'delete', orderable: false, searchable: false },
+                    ]
+                });
+            });
+        
+        });
+    </script>
+@endpush
