@@ -22,3 +22,7 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware(
 Route::resource('projects', 'ProjectsController')->middleware('verified');
 
 Route::resource('users', 'UsersController')->middleware('verified');
+
+Route::get('datatables/users', 'UsersController@getUsersData')
+        ->name('datatables.users')
+        ->middleware('verified');
