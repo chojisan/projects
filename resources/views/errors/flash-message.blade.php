@@ -42,3 +42,7 @@
         Please check the form for errors
     </div>
 @endif
+
+@push('plugin-styles')
+    
+@endpush
