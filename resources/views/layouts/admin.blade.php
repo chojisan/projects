@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
 
     <!-- Datatables -->
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
-
+    <!--<link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">-->
+    <link rel="stylesheet" href="/vendor/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -93,8 +93,8 @@
     <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- DataTables -->
-    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-    
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="/vendor/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
     <!-- Morris.js charts -->
     <script src="/vendor/raphael/raphael.min.js"></script>
     <script src="/vendor/morris.js/morris.min.js"></script>
@@ -128,6 +128,9 @@
     <script src="/vendor/admin-lte/dist/js/demo.js"></script>
 
     <!-- Scripts -->
+    <!--
     <script src="{{-- asset('js/app.js') --}}" defer></script>
+    -->
+    @stack('plugin-scripts')
 </body>
 </html>
