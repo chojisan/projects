@@ -72,8 +72,8 @@ class UsersController extends Controller
         $validated['password'] = Hash::make($validated['password']);
 
         // create and send activation email
-        //event(new Registered(User::create($validated)));
-        User::create($validated);
+        event(new Registered(User::create($validated)));
+        //User::create($validated);
 
         return redirect()
                 ->route('users.index')

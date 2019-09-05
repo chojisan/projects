@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Jobs\SendVerificationEmail;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -40,5 +41,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function projects()
     {
         return $this->hasMany(Project::class);
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        SendVerificationEmail::dispatch($this)->onQueue('email');
+        //$this->notify(new \App\Notifications\SendVerificationNotification);
     }
 }
