@@ -1,12 +1,12 @@
 $(function() {
     'use strict'
 
-    var userUrl = '/users';
+    var baseUrl = '/users';
 
     var usersTable = $('#users-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: userUrl,
+        ajax: baseUrl,
         columns: [
             { data: 'id', name: 'id' },
             { data: 'name', name: 'name' },
@@ -38,14 +38,14 @@ $(function() {
         .on('show.bs.modal', function(e) {
             $(this).find('p strong#user-name').text(name);
         })
-        .on('click', 'button#delete-user', function(e) {
+        .on('click', 'button#delete-item', function(e) {
             e.preventDefault();
             deleteUser(href);
             //deleteUserForm(href)
         });
 
     function deleteUser(href) {
-        var form = $('#delete-user-form');
+        var form = $('#delete-form');
 
         $.ajaxSetup({
             headers: {

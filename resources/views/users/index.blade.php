@@ -48,7 +48,7 @@
             </div>
         </div>
 
-        {!! Form::open(['method' => 'delete', 'id' => 'delete-user-form']) !!}
+        {!! Form::open(['method' => 'delete', 'id' => 'delete-form']) !!}
             
         {!! Form::close() !!}
 
@@ -66,7 +66,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-defaultt" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-danger" id="delete-user">Delete Anyway</button>
+                        <button type="button" class="btn btn-danger" id="delete-item">Delete Anyway</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->
