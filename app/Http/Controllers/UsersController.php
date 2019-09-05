@@ -135,6 +135,10 @@ class UsersController extends Controller
     {
         $user->delete();
 
+        if (request()->ajax()) {
+            return response()->json(['success', 'User deleted successfully!']);
+        }
+
         return redirect()
                 ->route('users.index')
                 ->with('success', 'User deleted successfully!');
