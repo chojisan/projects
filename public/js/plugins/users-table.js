@@ -1,7 +1,7 @@
 $(function() {
     'use strict'
 
-    var userUrl = '/datatables/users';
+    var userUrl = '/users';
 
     var usersTable = $('#users-table').DataTable({
         processing: true,
