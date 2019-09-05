@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Project;
 use Illuminate\Support\Arr;
+use DataTables;
 
 class ProjectsController extends Controller
 {
@@ -15,9 +16,26 @@ class ProjectsController extends Controller
 
     public function index()
     {
-        $projects = Project::with('user')->paginate(10);
+        //$projects = Project::with('user')->paginate(10);
 
-        return view('projects.index', compact('projects'));
+        if (request()->ajax()) {
+            $projects = Project::with('user')->get();
+
+            return DataTables::of($projects)
+                    ->addColumn('show', function ($project) {
+                        return '<a href="'.route('projects.show', $project->id).'" class="label label-info"><i class="fa fa-eye"></i> Show</a>';
+                    })
+                    ->addColumn('edit', function ($project) {
+                        return '<a href="'.route('projects.edit', $project->id).'" class="label label-warning"><i class="fa fa-edit"></i> Edit</a>';
+                    })
+                    ->addColumn('delete', function ($project) {
+                        return '<a href="#" class="label label-danger delete-btn" data-id="'.$project->id.'" data-title="'.$project->title.'" data-href="'.route('projects.destroy', $project->id).'" data-toggle="modal" data-target="#modal-default"><i class="fa fa-trash"></i> Delete</a>';
+                    })
+                    ->rawColumns(['show', 'edit', 'delete'])
+                    ->make(true);
+        }
+
+        return view('projects.index');
     }
 
     public function create()
@@ -60,6 +78,10 @@ class ProjectsController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
+
+        if (request()->json()) {
+            return response()->json(['success', 'Project deleted successfully!']);
+        }
 
         return redirect()
                 ->route('projects.index')

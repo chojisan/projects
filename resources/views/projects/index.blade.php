@@ -24,59 +24,57 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <a href="{{ route('projects.create') }}" class="btn btn-primary" style="margin-bottom: 10px;">Add Project</a>
-                        <table class="table table-bordered">
-                            <tr>
-                                <th style="width: 10px">#</th>
-                                <th>Title</th>
-                                <th>Author</th>
-                                <th>Description</th>
-                                <th style="width: 40px"></th>
-                                <th style="width: 40px"></th>
-                                <th style="width: 40px"></th>
-                            </tr>
-
-                            @forelse($projects as $project)
+                        <table id="projects-table" class="table table-bordered">
+                            <thead>
                                 <tr>
-                                    <td>{{ $project->id }}</td>
-                                    <td>{{ $project->title }}</td>
-                                    <td>{{ $project->user->name }}</td>
-                                    <td>{{ $project->description }}</td>
-                                    <td><a href="{{ route('projects.show', $project->id) }}" class="label label-info"><i class="fa fa-eye"></i></a></td>
-                                    <td><a href="{{ route('projects.edit', $project->id) }}" class="label label-warning"><i class="fa fa-edit"></i></a></td>
-                                    <td>
-                                        <a href="#" class="label label-danger" onclick="event.preventDefault();
-                                        document.getElementById('delete-project-form-{{ $project->id }}').submit();">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                        <form id="delete-project-form-{{ $project->id }}" action="{{ route('projects.destroy', $project->id) }}" method="POST" style="display: none;">
-                                            @csrf
-                                             @method('DELETE')
-                                        </form>
-                                    </td>
+                                    <th style="width: 10px">#</th>
+                                    <th>Title</th>
+                                    <!--<th>Author</th>-->
+                                    <th>Description</th>
+                                    <th style="width: 40px"></th>
+                                    <th style="width: 40px"></th>
+                                    <th style="width: 40px"></th>
                                 </tr>
-
-                                @empty
-                                    <tr>
-                                        <td colspan="7">No current projects</td>
-                                    </tr>
-                            @endforelse
+                            </thead>
                         </table>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">
-                        {{ $projects->links() }}
-                        <!--
-                        <ul class="pagination pagination-sm no-margin pull-right">
-                            <li><a href="#">&laquo;</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">&raquo;</a></li>
-                        </ul>-->
+
                     </div>
                 </div>
                 <!-- /.box -->
             </div>
         </div>
+        {!! Form::open(['method' => 'delete', 'id' => 'delete-form']) !!}
+            
+        {!! Form::close() !!}
+
+        <div class="modal fade" id="modal-default">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">Delete Record</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete <strong id="title"></strong> article?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-defaultt" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" id="delete-item">Delete Anyway</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
     </section>
 @endsection
+
+@push('plugin-scripts')
+    <script src="{{ asset('js/plugins/projects-table.js') }}" defer></script>
+@endpush
