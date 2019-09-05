@@ -43,6 +43,13 @@
     </div>
 @endif
 
-@push('plugin-styles')
-    
+@push('plugin-scripts')
+    <script defer>
+        $(function() {
+            'use strict'
+            setTimeout(function() {
+                $('.alert').hide();
+            }, 3000);
+        });
+    </script>
 @endpush
