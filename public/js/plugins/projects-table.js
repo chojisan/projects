@@ -32,7 +32,7 @@ $(function() {
 
     });
 
-    $('#modal-default')
+    $('#modalDefault')
         .on('show.bs.modal', function(e) {
             $(this).find('p strong#title').text(title);
         })
@@ -60,7 +60,7 @@ $(function() {
             flashMessage(data);
             //usersTable.ajax.reload();
             usersTable.draw();
-            $('#modal-default').modal('hide');
+            $('#modalDefault').modal('hide');
         });
     }
 
@@ -71,6 +71,6 @@ $(function() {
         form.submit();
         //usersTable.ajax.reload();
         usersTable.draw();
-        $('#modal-default').modal('hide');
+        $('#modalDefault').modal('hide');
     }
 });

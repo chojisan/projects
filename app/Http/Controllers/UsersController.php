@@ -35,7 +35,7 @@ class UsersController extends Controller
                         return '<a href="'.route('users.edit', $user->id).'" class="label label-warning"><i class="fa fa-edit"></i> Edit</a>';
                     })
                     ->addColumn('delete', function ($user) {
-                        return '<a href="#" class="label label-danger delete-btn" data-id="'.$user->id.'" data-name="'.$user->name.'" data-href="'.route('users.destroy', $user->id).'" data-toggle="modal" data-target="#modal-default"><i class="fa fa-trash"></i> Delete</a>';
+                        return '<a href="#" class="label label-danger delete-btn" data-id="'.$user->id.'" data-name="'.$user->name.'" data-href="'.route('users.destroy', $user->id).'" data-toggle="modal" data-target="#modalDefault"><i class="fa fa-trash"></i> Delete</a>';
                     })
                     ->editColumn('email_verified_at', function ($user) {
                         return $user->email_verified_at ? $user->email_verified_at->diffForHumans() : '-';

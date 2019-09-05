@@ -29,7 +29,7 @@ class ProjectsController extends Controller
                         return '<a href="'.route('projects.edit', $project->id).'" class="label label-warning"><i class="fa fa-edit"></i> Edit</a>';
                     })
                     ->addColumn('delete', function ($project) {
-                        return '<a href="#" class="label label-danger delete-btn" data-id="'.$project->id.'" data-title="'.$project->title.'" data-href="'.route('projects.destroy', $project->id).'" data-toggle="modal" data-target="#modal-default"><i class="fa fa-trash"></i> Delete</a>';
+                        return '<a href="#" class="label label-danger delete-btn" data-id="'.$project->id.'" data-title="'.$project->title.'" data-href="'.route('projects.destroy', $project->id).'" data-toggle="modal" data-target="#modalDefault"><i class="fa fa-trash"></i> Delete</a>';
                     })
                     ->rawColumns(['show', 'edit', 'delete'])
                     ->make(true);

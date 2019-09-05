@@ -49,31 +49,77 @@
         </div>
 
         {!! Form::open(['method' => 'delete', 'id' => 'delete-form']) !!}
-            
         {!! Form::close() !!}
 
-        <div class="modal fade" id="modal-default">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title">Delete Record</h4>
+        @component('components.modal')
+            @slot('id')
+            @endslot
+
+            @slot('title')
+                <h4 class="modal-title">Delete Record</h4>
+            @endslot
+
+            @slot('body')
+                <p>Are you sure you want to delete <strong id="user-name"></strong> record?</p>
+            @endslot
+
+            @slot('footer')
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="delete-item">Delete Anyway</button>
+            @endslot
+        @endcomponent
+
+       
+
+        <div class="modal fade" id="showDetails">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title">User Details</h4>
+                        </div>
+                        <div class="modal-body form-horizontal">
+                                <div class="form-group has-feedback">
+                                        <label for="name" class="col-sm-2 control-label">Full Name</label>
+                                        <div class="col-sm-10">
+                                            <div class="form-control">
+                                                
+                                            </div>
+                                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                                        </div>
+                                    </div>
+            
+                                    <div class="form-group has-feedback">
+                                        <label for="username" class="col-sm-2 control-label">Username</label>
+                                        <div class="col-sm-10">
+                                            <div class="form-control">
+                                                
+                                            </div>
+                                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                                        </div>
+                                    </div>
+                
+                                    <div class="form-group has-feedback">
+                                        <label for="email" class="col-sm-2 control-label">Email Address</label>
+                                        <div class="col-sm-10">
+                                            <div class="form-control">
+                                                
+                                            </div>
+                                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                                        </div>
+                                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-defaultt" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <p>Are you sure you want to delete <strong id="user-name"></strong> record?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-defaultt" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-danger" id="delete-item">Delete Anyway</button>
-                    </div>
+                    <!-- /.modal-content -->
                 </div>
-                <!-- /.modal-content -->
+                <!-- /.modal-dialog -->
             </div>
-            <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
+            <!-- /.modal -->
     </section>
 @endsection
 

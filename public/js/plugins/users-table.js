@@ -34,7 +34,7 @@ $(function() {
 
     });
 
-    $('#modal-default')
+    $('#modalDefault')
         .on('show.bs.modal', function(e) {
             $(this).find('p strong#user-name').text(name);
         })
@@ -62,17 +62,17 @@ $(function() {
             flashMessage(data);
             //usersTable.ajax.reload();
             usersTable.draw();
-            $('#modal-default').modal('hide');
+            $('#modalDefault').modal('hide');
         });
     }
 
     function deleteUserForm(href) {
-        var form = $('#delete-user-form');
+        var form = $('#delete-form');
 
         form.attr('action', href);
         form.submit();
         //usersTable.ajax.reload();
         usersTable.draw();
-        $('#modal-default').modal('hide');
+        $('#modalDefault').modal('hide');
     }
 });
