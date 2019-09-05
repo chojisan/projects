@@ -22,6 +22,8 @@ $(function() {
     var id = '';
     var name = '';
     var href = '';
+    var currentRow = '';
+
     // delete user
     $('#users-table').on('click', ' a.delete-user-btn', function(e) {
         e.preventDefault();
@@ -55,8 +57,11 @@ $(function() {
             type: "POST",
             url: href,
             data: form.serialize()
-        }).done(function() {
-            usersTable.ajax.reload();
+        }).done(function(data) {
+
+            flashMessage(data);
+            //usersTable.ajax.reload();
+            usersTable.draw();
             $('#modal-default').modal('hide');
         });
     }
@@ -66,7 +71,8 @@ $(function() {
 
         form.attr('action', href);
         form.submit();
-        usersTable.ajax.reload();
+        //usersTable.ajax.reload();
+        usersTable.draw();
         $('#modal-default').modal('hide');
     }
 });
