@@ -1,5 +1,4 @@
 function flashMessage(data) {
-    console.log('aa-' + data);
     var alert = $('.alert-' + data[0])
 
     alert.find('strong.alert-message').text(data[1]);
