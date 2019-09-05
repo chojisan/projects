@@ -25,7 +25,7 @@ $(function() {
     var currentRow = '';
 
     // delete user
-    $('#users-table').on('click', ' a.delete-user-btn', function(e) {
+    $('#users-table').on('click', ' a.delete-btn', function(e) {
         e.preventDefault();
 
         id = $(this).data('id');
