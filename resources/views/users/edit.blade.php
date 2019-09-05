@@ -26,15 +26,12 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form action="{{ route('users.update', $user->id) }}" method="post" role="form" class="form-horizontal">
+                    {{ Form::open(['url' => route('users.update', $user->id), 'method' => 'patch', 'id' => 'edit-form', 'class' => 'form-horizontal', 'role' => 'form']) }}
                         <div class="box-body">
-                            @csrf
-                            @method('PATCH')
-
                             <div class="form-group has-feedback @error('name') has-error @enderror">
-                                <label for="name" class="col-sm-2 control-label">Full Name</label>
+                                {{ Form::label('name', 'Full Name', ['class' => 'col-sm-2 control-label']) }}
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus placeholder="Full name">
+                                    {{ Form::text('name', old('name') ?: $user->name, ['class' => 'form-control', 'required' => '', 'placeholder' => 'Full Name']) }}
                                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                                     @error('name')
                                         <span class="help-block" role="alert">
@@ -45,9 +42,9 @@
                             </div>
 
                             <div class="form-group has-feedback @error('username') has-error @enderror">
-                                <label for="username" class="col-sm-2 control-label">Username</label>
+                                {{ Form::label('username', 'Username', ['class' => 'col-sm-2 control-label']) }}
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="username" name="username" value="{{ old('username') ?: $user->username }}" required autocomplete="username" autofocus placeholder="username">
+                                    {{ Form::text('username', old('username') ?: $user->username, ['class' => 'form-control', 'required' => '', 'placeholder' => 'Username']) }}
                                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                                     @error('username')
                                         <span class="help-block" role="alert">
@@ -58,9 +55,9 @@
                             </div>
 
                             <div class="form-group has-feedback @error('email') has-error @enderror">
-                                <label for="email" class="col-sm-2 control-label">Email Address</label>
+                                {{ Form::label('email', 'Email Address', ['class' => 'col-sm-2 control-label']) }}
                                 <div class="col-sm-10">
-                                    <input type="email" id="email" class="form-control" name="email" value="{{ old('email') ?: $user->email }}" required autocomplete="email" placeholder="Email Address">
+                                    {{ Form::text('email', old('email') ?: $user->email, ['class' => 'form-control', 'required' => '', 'placeholder' => 'Email Addess']) }}
                                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                                     @error('email')
                                         <span class="help-block" role="alert">
@@ -71,9 +68,9 @@
                             </div>
 
                             <div class="form-group has-feedback @error('password') has-error @enderror">
-                                <label for="password" class="col-sm-2 control-label">Password</label>
+                                {{ Form::label('password', 'Password', ['class' => 'col-sm-2 control-label']) }}
                                 <div class="col-sm-10">
-                                    <input id="password" type="password" class="form-control" name="password" required autocomplete="new-password" placeholder="Password">
+                                    {{ Form::password('password', ['class' => 'form-control', 'required' => '', 'placeholder' => 'Password']) }}
                                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                                     @error('password')
                                         <span class="help-block" role="alert">
@@ -84,9 +81,9 @@
                             </div>
         
                             <div class="form-group has-feedback">
-                                <label for="password_confirmation" class="col-sm-2 control-label">Retype Password</label>
+                                    {{ Form::label('password_confirmation', 'Retype Password', ['class' => 'col-sm-2 control-label']) }}
                                 <div class="col-sm-10">
-                                    <input id="password_confirmation" type="password" class="form-control"  name="password_confirmation" required autocomplete="new-password" placeholder="Retype password">
+                                    {{ Form::password('password_confirmation', ['class' => 'form-control', 'required' => '', 'placeholder' => 'Retype password']) }}
                                     <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
                                 </div>
                             </div>
@@ -94,9 +91,9 @@
 
                         <div class="box-footer">
                             <a href="{{ route('users.index') }}" class="btn btn-danger">Cancel</a>
-                            <button type="submit" class="btn btn-primary">Update</button>
+                            {{ Form::submit('Update', ['class' => 'btn btn-primary']) }}
                         </div>
-                    </form>
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>
