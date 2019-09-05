@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserValidation;
 use Illuminate\Validation\Rule;
 use Illuminate\Auth\Events\Registered;
+use DataTables;
 
 class UsersController extends Controller
 {
@@ -23,9 +24,27 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(10);
+        if (request()->ajax()) {
+            $users = User::select(['id', 'name', 'username', 'email', 'email_verified_at']);
 
-        return view('users.index', compact('users'));
+            return DataTables::of($users)
+                    ->addColumn('show', function ($user) {
+                        return '<a href="'.route('users.show', $user->id).'" class="label label-info"><i class="fa fa-eye"></i> Show</a>';
+                    })
+                    ->addColumn('edit', function ($user) {
+                        return '<a href="'.route('users.edit', $user->id).'" class="label label-warning"><i class="fa fa-edit"></i> Edit</a>';
+                    })
+                    ->addColumn('delete', function ($user) {
+                        return '<a href="#" class="label label-danger delete-user-btn" data-id="'.$user->id.'" data-name="'.$user->name.'" data-href="'.route('users.destroy', $user->id).'" data-toggle="modal" data-target="#modal-default"><i class="fa fa-trash"></i> Delete</a>';
+                    })
+                    ->editColumn('email_verified_at', function ($user) {
+                        return $user->email_verified_at ? $user->email_verified_at->diffForHumans() : '-';
+                    })
+                    ->rawColumns(['show', 'edit', 'delete'])
+                    ->make(true);
+        }
+
+        return view('users.index');
     }
 
     /**
@@ -53,7 +72,8 @@ class UsersController extends Controller
         $validated['password'] = Hash::make($validated['password']);
 
         // create and send activation email
-        event(new Registered(User::create($validated)));
+        //event(new Registered(User::create($validated)));
+        User::create($validated);
 
         return redirect()
                 ->route('users.index')
