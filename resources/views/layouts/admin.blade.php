@@ -133,10 +133,9 @@
     <script src="/vendor/admin-lte/dist/js/demo.js"></script>
 
     <!-- Scripts -->
-    <!--
-    <script src="{{-- asset('js/app.js') --}}" defer></script>
-    -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/plugins/flash-message.js') }}" defer></script>
+    
     @stack('plugin-scripts')
 </body>
 </html>
