@@ -69,57 +69,54 @@
             @endslot
         @endcomponent
 
-       
+        @component('components.modal')
+            @slot('id')
+                Show
+            @endslot
 
-        <div class="modal fade" id="showDetails">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <h4 class="modal-title">User Details</h4>
-                        </div>
-                        <div class="modal-body form-horizontal">
-                                <div class="form-group has-feedback">
-                                        <label for="name" class="col-sm-2 control-label">Full Name</label>
-                                        <div class="col-sm-10">
-                                            <div class="form-control">
-                                                
-                                            </div>
-                                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                                        </div>
-                                    </div>
-            
-                                    <div class="form-group has-feedback">
-                                        <label for="username" class="col-sm-2 control-label">Username</label>
-                                        <div class="col-sm-10">
-                                            <div class="form-control">
-                                                
-                                            </div>
-                                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                                        </div>
-                                    </div>
-                
-                                    <div class="form-group has-feedback">
-                                        <label for="email" class="col-sm-2 control-label">Email Address</label>
-                                        <div class="col-sm-10">
-                                            <div class="form-control">
-                                                
-                                            </div>
-                                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                                        </div>
-                                    </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-defaultt" data-dismiss="modal">Close</button>
+            @slot('title')
+                <h4 class="modal-title">User Details</h4>
+            @endslot
+
+            @slot('body')
+                <div class="form-horizontal">
+                    <div class="form-group has-feedback">
+                        <label for="name" class="col-sm-2 control-label">Full Name</label>
+                        <div class="col-sm-10">
+                            <div class="form-control">
+                                    
+                            </div>
+                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                     </div>
-                    <!-- /.modal-content -->
+
+                    <div class="form-group has-feedback">
+                        <label for="username" class="col-sm-2 control-label">Username</label>
+                        <div class="col-sm-10">
+                            <div class="form-control">
+                                    
+                            </div>
+                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        </div>
+                    </div>
+    
+                    <div class="form-group has-feedback">
+                        <label for="email" class="col-sm-2 control-label">Email Address</label>
+                        <div class="col-sm-10">
+                            <div class="form-control">
+                                    
+                            </div>
+                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        </div>
+                    </div>
                 </div>
-                <!-- /.modal-dialog -->
-            </div>
-            <!-- /.modal -->
+            @endslot
+
+            @slot('footer')
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            @endslot
+        @endcomponent
+
     </section>
 @endsection
 
