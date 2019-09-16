@@ -29,7 +29,7 @@
                                 <tr>
                                     <th style="width: 10px">#</th>
                                     <th>Title</th>
-                                    <!--<th>Author</th>-->
+                                    <th>Author</th>
                                     <th>Description</th>
                                     <th style="width: 40px"></th>
                                     <th style="width: 40px"></th>
