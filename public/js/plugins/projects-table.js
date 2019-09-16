@@ -10,7 +10,7 @@ $(function() {
         columns: [
             { data: 'id', name: 'id' },
             { data: 'title', name: 'title' },
-            //{ data: 'author', name: 'author' },
+            { data: 'user_id', name: 'user_id' },
             { data: 'description', name: 'description' },
             { data: 'show', name: 'show', orderable: false, searchable: false, sType: 'html' },
             { data: 'edit', name: 'edit', orderable: false, searchable: false },
