@@ -22,6 +22,9 @@ class ProjectsController extends Controller
             $projects = Project::with('user')->get();
 
             return DataTables::of($projects)
+                    ->editColumn('user_id', function ($project) {
+                        return $project->user->name;
+                    })
                     ->addColumn('show', function ($project) {
                         return '<a href="'.route('projects.show', $project->id).'" class="label label-info"><i class="fa fa-eye"></i> Show</a>';
                     })
