@@ -12,5 +12,5 @@
 */
 
 Route::prefix('auth')->group(function() {
-    Route::get('/', 'AuthController@index');
+    //Route::get('/', 'AuthController@index');
 });
